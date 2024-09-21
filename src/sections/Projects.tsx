@@ -94,7 +94,6 @@ export default function Projects() {
           title="Featured Projects"
           description="See how i transform concept into engaging digital experiences."
         />
-
         <div className="flex flex-col gap-20 mt-10 md:mt-20">
           {portfolioProjects.map((project, projectIndex) => (
             <Card

@@ -16,4 +16,16 @@
   .container {
     @apply lg:max-w-5xl;
   }
+
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    @apply rounded bg-gradient-to-r from-emerald-300 to-sky-400; /* Tailwind gradient colors with rounded edges */
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track {
+    @apply bg-gray-800/60; /* Semi-transparent track */
+  }
 }

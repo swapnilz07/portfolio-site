@@ -197,7 +197,7 @@ export default function About() {
                   description="Explore my interests and hobbies beyond the digital realm."
                 />
                 <div
-                  className="relative flex-1 min-h-[100px] px-3"
+                  className="relative flex-1 min-h-44 lg:min-h-[100px] px-3"
                   ref={constraintRef}
                 >
                   {hobbies.map((hobby) => (

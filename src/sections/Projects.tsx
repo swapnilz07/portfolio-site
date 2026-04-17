@@ -12,6 +12,7 @@ import Card from "@/components/Card";
 
 const portfolioProjects = [
   {
+    id: 1,
     title: "Twitter Clone",
     time: "Aug 15",
     results: [
@@ -24,6 +25,7 @@ const portfolioProjects = [
     liveLink: "https://twitter-clone-mern-4eu2.onrender.com/",
   },
   {
+    id: 2,
     title: "Youtube Clone",
     time: "Jul 15",
     results: [
@@ -36,6 +38,7 @@ const portfolioProjects = [
     liveLink: "",
   },
   {
+    id: 3,
     title: "Weather Forecast",
     time: "Jun 15",
     results: [
@@ -48,6 +51,7 @@ const portfolioProjects = [
     liveLink: "https://weather-app-iota-mauve.vercel.app/",
   },
   {
+    id: 4,
     title: "My Portfolio",
     time: "May 15",
     results: [
@@ -60,6 +64,7 @@ const portfolioProjects = [
     liveLink: "https://portfolio-mu-eosin-52.vercel.app/",
   },
   {
+    id: 5,
     title: "Finance App",
     time: "Apr 15",
     results: [
@@ -72,6 +77,7 @@ const portfolioProjects = [
     liveLink: "",
   },
   {
+    id: 5,
     title: "Tic Tac Toe",
     time: "March 15",
     results: [
@@ -97,7 +103,7 @@ export default function Projects() {
         <div className="flex flex-col gap-20 mt-10 md:mt-20">
           {portfolioProjects.map((project, projectIndex) => (
             <Card
-              key={project.title}
+              key={project.id}
               className="px-8 md:px-10 lg:px-20 pt-8 md:pt-12 lg:pt-16 pb-0 sticky"
               style={{
                 top: `calc(64px + ${projectIndex * 40}px)`,
@@ -114,7 +120,10 @@ export default function Projects() {
                   <hr className="border-t-2 border-white/5 mt-4 md:mt-5" />
                   <ul className="flex flex-col gap-4 mt-4 md:mt-5">
                     {project.results.map((result) => (
-                      <li className="flex gap-2 text-sm md:text-base text-white/50">
+                      <li
+                        className="flex gap-2 text-sm md:text-base text-white/50"
+                        key={result?.title}
+                      >
                         <CheckCircleIcon className="size-5 md:size-6" />
                         <span>{result.title}</span>
                       </li>

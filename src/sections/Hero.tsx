@@ -132,7 +132,7 @@ export default function Hero() {
             Swapnil Zakade
           </h1>
           <a
-            href="https://drive.google.com/file/d/1vH2pdwjMLJZibRqyKqAdCoFsQl2bBemI/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1brmxqDxb-T99whzX7VYjKLiUmY51m33i/view?usp=sharing"
             target="_blank"
             className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl z-50"
           >

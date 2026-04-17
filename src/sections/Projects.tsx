@@ -22,7 +22,7 @@ const portfolioProjects = [
     ],
     image: twitterClone,
     githubLink: "https://github.com/swapnilz07/twitter-clone-mern",
-    liveLink: "https://twitter-clone-mern-4eu2.onrender.com/",
+    // no liveLink
   },
   {
     id: 2,
@@ -34,8 +34,8 @@ const portfolioProjects = [
       { title: "using React JS, Tailwind CSS and Rapid API" },
     ],
     image: youtubeClone,
-    githubLink: "https://github.com/swapnilz07/twitter-clone-mern",
-    liveLink: "",
+    githubLink: "https://github.com/swapnilz07/Youtube-clone",
+    // no liveLink
   },
   {
     id: 3,
@@ -56,12 +56,12 @@ const portfolioProjects = [
     time: "May 15",
     results: [
       { title: "Enhanced user experience by 40%" },
-      { title: "Imporove side speed by 50%" },
+      { title: "Improve side speed by 50%" },
       { title: "Increased Mobile traffic by 30%" },
     ],
     image: portfolio,
     githubLink: "https://github.com/swapnilz07/Portfolio/",
-    liveLink: "https://portfolio-mu-eosin-52.vercel.app/",
+    liveLink: "https://swapnil-portfolio-site.vercel.app/",
   },
   {
     id: 5,
@@ -74,10 +74,10 @@ const portfolioProjects = [
     ],
     image: FinanceApp,
     githubLink: "https://github.com/swapnilz07/finance-app-client-side",
-    liveLink: "",
+    // no liveLink
   },
   {
-    id: 5,
+    id: 6, // fixed duplicate id
     title: "Tic Tac Toe",
     time: "March 15",
     results: [
@@ -101,51 +101,66 @@ export default function Projects() {
           description="See how i transform concept into engaging digital experiences."
         />
         <div className="flex flex-col gap-20 mt-10 md:mt-20">
-          {portfolioProjects.map((project, projectIndex) => (
-            <Card
-              key={project.id}
-              className="px-8 md:px-10 lg:px-20 pt-8 md:pt-12 lg:pt-16 pb-0 sticky"
-              style={{
-                top: `calc(64px + ${projectIndex * 40}px)`,
-              }}
-            >
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                <div className="lg:pb-16">
-                  <div className="bg-gradient-to-r from-emerald-300 to-sky-400 inline-flex gap-2 font-bold tracking-widest text-sm text-transparent bg-clip-text">
-                    {project.time}
+          {portfolioProjects.map((project, projectIndex) => {
+            // Determine button properties based on existence of liveLink
+            const hasLiveLink = !!project.liveLink;
+            const buttonHref = hasLiveLink
+              ? project.liveLink
+              : project.githubLink;
+            const buttonText = hasLiveLink
+              ? "Visit Live Site"
+              : "Visit GitHub Repo";
+
+            return (
+              <Card
+                key={project.id}
+                className="px-8 md:px-10 lg:px-20 pt-8 md:pt-12 lg:pt-16 pb-0 sticky"
+                style={{
+                  top: `calc(64px + ${projectIndex * 40}px)`,
+                }}
+              >
+                <div className="lg:grid lg:grid-cols-2 lg:gap-16">
+                  <div className="lg:pb-16">
+                    <div className="bg-gradient-to-r from-emerald-300 to-sky-400 inline-flex gap-2 font-bold tracking-widest text-sm text-transparent bg-clip-text">
+                      {project.time}
+                    </div>
+                    <h3 className="font-serif text-3xl md:text-4xl mt-2 md:mt-5 font-semibold text-center">
+                      {project.title}
+                    </h3>
+                    <hr className="border-t-2 border-white/5 mt-4 md:mt-5" />
+                    <ul className="flex flex-col gap-4 mt-4 md:mt-5">
+                      {project.results.map((result) => (
+                        <li
+                          className="flex gap-2 text-sm md:text-base text-white/50"
+                          key={result?.title}
+                        >
+                          <CheckCircleIcon className="size-5 md:size-6" />
+                          <span>{result.title}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={buttonHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <button className="bg-white text-gray-900 h-12 w-full md:w-auto px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8">
+                        <span>{buttonText}</span>
+                        <ArrowUpRightIcon className="size-4" />
+                      </button>
+                    </a>
                   </div>
-                  <h3 className="font-serif text-3xl md:text-4xl mt-2 md:mt-5 font-semibold text-center">
-                    {project.title}
-                  </h3>
-                  <hr className="border-t-2 border-white/5 mt-4 md:mt-5" />
-                  <ul className="flex flex-col gap-4 mt-4 md:mt-5">
-                    {project.results.map((result) => (
-                      <li
-                        className="flex gap-2 text-sm md:text-base text-white/50"
-                        key={result?.title}
-                      >
-                        <CheckCircleIcon className="size-5 md:size-6" />
-                        <span>{result.title}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a href={project.liveLink}>
-                    <button className="bg-white text-gray-900 h-12 w-full md:w-auto px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8">
-                      <span>Visit Live Site</span>
-                      <ArrowUpRightIcon className="size-4" />
-                    </button>
-                  </a>
+                  <div className="relative">
+                    <Image
+                      src={project.image}
+                      className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none"
+                      alt={project.title}
+                    />
+                  </div>
                 </div>
-                <div className="relative">
-                  <Image
-                    src={project.image}
-                    className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none"
-                    alt={project.title}
-                  />
-                </div>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
